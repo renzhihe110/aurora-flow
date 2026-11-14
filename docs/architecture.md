@@ -2,9 +2,9 @@
 
 ## Rendering
 
-`AuroraOverlayPanel` is a borderless, transparent, nonactivating `NSPanel`. It uses the full `NSScreen.frame`, ignores mouse events, cannot become key/main, and joins standard full-screen Spaces through public AppKit collection behavior. Each display has an independent drawable at its own backing scale.
+`AuroraOverlayPanel` is a borderless, transparent, nonactivating `NSPanel`. It uses the current `NSScreen.visibleFrame` to exclude the menu bar and Dock, ignores mouse events, cannot become key/main, and joins standard full-screen Spaces through public AppKit collection behavior. Each display has an independent drawable at its own backing scale.
 
-`AuroraRenderer` shares a Metal device, queue and render pipeline. A frame uses 24 vertices covering four nonoverlapping edge bands and an 80-byte uniform. `AuroraShaders.metal` computes a signed distance to the border and actual perimeter distance: four straight lines, two top arcs, and square bottom joins. Core light and two soft falloffs are composited as premultiplied alpha; the center remains transparent.
+`AuroraRenderer` shares a Metal device, queue and render pipeline. A frame uses 24 vertices covering four nonoverlapping edge bands and an 80-byte uniform. `AuroraShaders.metal` computes a signed distance to the border and actual perimeter distance: four straight lines and four rounded corner arcs. The default core width is 6 physical pixels with a 40-pixel glow radius. Core light and two soft falloffs are composited as premultiplied alpha; the center remains transparent.
 
 A shared monotonic timeline drives an 8-second gradient cycle, 3-second subtle breath, and a slower highlight about 11% of the perimeter. These are independent periods; the full combined image does not have to repeat after eight seconds. Configuration changes retain animation phase.
 

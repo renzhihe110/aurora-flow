@@ -4,9 +4,11 @@
 
 [English](README.md) · [下载发布包](https://github.com/renzhihe110/aurora-flow/releases/latest) · [MIT 许可证](LICENSE)
 
-光效沿真实显示器四边流动，中心透明、鼠标穿透、不抢占当前应用焦点。顶部两个角为圆角，底部两个角为直角。仓库同时包含 **Swift/AppKit/Metal App** 和支持 `computer-use`、`cua_repl`、`agent-desktop`、`mac-input` 的 **Codex Skill**。
+光效沿系统可用桌面区域四边流动，避开当前菜单栏和 Dock，中心透明、鼠标穿透、不抢占当前应用焦点。四个角均为圆角，默认核心线宽 6 物理像素、光晕半径 40 物理像素。仓库同时包含 **Swift/AppKit/Metal App** 和支持 `computer-use`、`cua_repl`、`agent-desktop`、`mac-input` 的 **Codex Skill**。
 
 ## 下载与要求
+
+已发布的 v1.0.0 下载包保留原来的整屏边框和底部直角；本文所述可用区域边框与加粗默认值属于当前源码变更。
 
 | 文件 | 内容 |
 | --- | --- |
@@ -95,7 +97,7 @@ python3 scripts/package_release.py --app build/Build/Products/Release/AuroraFlow
 
 将 `AuroraFlow/Core`、`Overlay`、`Rendering` 加入自己的 macOS target，并确认 `.metal` 文件加入 Compile Sources。在主线程使用 `AuroraBorder.start()`、`.success()`、`.error()`、`.cancel()`、`.stop()`；配置赋值即时生效。
 
-尺寸采用物理像素，`cornerRadius` 仅控制顶部两个角。支持所有屏幕、系统主屏和指定屏幕 UUID。组件本身代表一个任务状态，多任务仲裁由宿主应用决定。
+尺寸采用物理像素，`cornerRadius` 控制四个角。支持所有屏幕、系统主屏和指定屏幕 UUID。组件本身代表一个任务状态，多任务仲裁由宿主应用决定。
 
 App 还提供 `auroraflow://start`、`success`、`error`、`stop`、`cancel`、`controls`、`configure`。例如 `open -g 'auroraflow://start'` 后台触发效果。URL 的 stop 淡出至 Idle；Skill 最后一次释放则退出整个进程。
 

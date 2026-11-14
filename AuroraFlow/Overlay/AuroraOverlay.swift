@@ -12,13 +12,13 @@ final class AuroraOverlayPanel: NSPanel {
         return false
     }
 
-    /// 屏幕 Overlay 不应被普通窗口的菜单栏避让规则向下挪动。
+    /// Overlay 已按系统可用区域定位，避免普通窗口约束再次调整位置。
     override func constrainFrameRect(_ frameRect: NSRect, to screen: NSScreen?) -> NSRect {
         return frameRect
     }
 
     init(screen: NSScreen) {
-        super.init(contentRect: screen.frame, styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
+        super.init(contentRect: screen.visibleFrame, styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
         title = "Aurora Flow Overlay"
         isOpaque = false
         backgroundColor = .clear
@@ -32,7 +32,7 @@ final class AuroraOverlayPanel: NSPanel {
         // 高于普通菜单栏和 Dock；锁屏/系统安全界面仍由系统掌控。
         level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.screenSaverWindow)))
         collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary, .ignoresCycle]
-        setFrame(screen.frame, display: false)
+        setFrame(screen.visibleFrame, display: false)
     }
 }
 
@@ -44,7 +44,7 @@ final class AuroraOverlay {
 
     init(screen: NSScreen, context: AuroraMetalContext, timeline: AuroraTimeline, config: AuroraConfig) {
         panel = AuroraOverlayPanel(screen: screen)
-        view = AuroraMetalView(frame: NSRect(origin: .zero, size: screen.frame.size), device: context.device)
+        view = AuroraMetalView(frame: NSRect(origin: .zero, size: screen.visibleFrame.size), device: context.device)
         renderer = AuroraRenderer(context: context, timeline: timeline, config: config)
         view.isPaused = true
         view.enableSetNeedsDisplay = false
@@ -63,8 +63,10 @@ final class AuroraOverlay {
 
     func update(screen: NSScreen, config: AuroraConfig) {
         renderer.config = config
-        panel.setFrame(screen.frame, display: false)
-        view.drawableSize = CGSize(width: screen.frame.width * screen.backingScaleFactor, height: screen.frame.height * screen.backingScaleFactor)
+        // 使用实时 visibleFrame，同步窗口和像素尺寸，排除菜单栏及当前 Dock 占用区域。
+        let frame = screen.visibleFrame
+        panel.setFrame(frame, display: false)
+        view.drawableSize = CGSize(width: frame.width * screen.backingScaleFactor, height: frame.height * screen.backingScaleFactor)
         view.layer?.contentsScale = screen.backingScaleFactor
         view.preferredFramesPerSecond = max(60, screen.maximumFramesPerSecond)
     }

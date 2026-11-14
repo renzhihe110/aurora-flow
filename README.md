@@ -4,11 +4,13 @@ A native macOS screen-edge glow for desktop automation and background tasks.
 
 [中文说明](README.zh-CN.md) · [Download](https://github.com/renzhihe110/aurora-flow/releases/latest) · [MIT License](LICENSE)
 
-Aurora Flow draws a calm cyan, blue and purple border around the real display. The center stays transparent, mouse input passes through, and task updates leave the current application focused. Top corners are rounded; bottom corners are square.
+Aurora Flow draws a calm cyan, blue and purple border around the usable desktop area, excluding the current menu bar and Dock. The center stays transparent, mouse input passes through, and task updates leave the current application focused. All four corners are rounded. The default core width is 6 physical pixels and the glow radius is 40 physical pixels.
 
 This repository includes both the **Swift/AppKit/Metal application** and a **Codex skill with lifecycle hooks** for `computer-use`, `cua_repl`, `agent-desktop` and `mac-input`.
 
 ## Downloads
+
+The v1.0.0 downloads retain the original full-display border with square bottom corners. The usable-area border and larger default glow described here are current source changes.
 
 | Release asset | Contents |
 | --- | --- |
@@ -113,12 +115,12 @@ Add `AuroraFlow/Core`, `Overlay` and `Rendering` to your target, including the `
 // Drive AppKit from the main actor; assigning configuration updates running overlays.
 @MainActor
 func beginTask() {
-    AuroraBorder.config = AuroraConfig(borderWidth: 3, glowRadius: 24, animationDuration: 8, breathingDuration: 3, brightness: 0.85, clockwise: true, displayMode: .allScreens)
+    AuroraBorder.config = AuroraConfig(borderWidth: 6, glowRadius: 40, animationDuration: 8, breathingDuration: 3, brightness: 0.85, clockwise: true, displayMode: .allScreens)
     AuroraBorder.start()
 }
 ```
 
-`AuroraBorder.success()`, `.error()`, `.cancel()` and `.stop()` provide completion feedback and fades. Dimensions are physical pixels. `cornerRadius` applies to the two top corners; display modes are all screens, primary screen, or a display UUID.
+`AuroraBorder.success()`, `.error()`, `.cancel()` and `.stop()` provide completion feedback and fades. Dimensions are physical pixels. `cornerRadius` applies to all four corners; display modes are all screens, primary screen, or a display UUID.
 
 The standalone App also supports `auroraflow://start`, `success`, `error`, `stop`, `cancel`, `controls` and `configure`. For example, `open -g 'auroraflow://start'` requests a background transition. URL `stop` fades to idle; the skill controller's last release exits the process.
 

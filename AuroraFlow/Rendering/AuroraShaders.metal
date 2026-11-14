@@ -41,32 +41,37 @@ vertex RasterData auroraVertex(uint vertexID [[vertex_id]], constant AuroraUnifo
     return output;
 }
 
-// 顶部保留两个圆弧，底部两角直接连接；按实际周长保持渐变连续。
+// 四个圆角按真实弧长参数化，渐变和高光经过拐角时保持连续。
 float perimeterPosition(float2 p, float2 lo, float2 hi, float r) {
     const float quarter = M_PI_F * 0.5 * r;
-    float topHorizontal = hi.x - lo.x - 2 * r;
-    float bottomHorizontal = hi.x - lo.x;
-    float vertical = hi.y - lo.y - r;
-    float perimeter = topHorizontal + bottomHorizontal + 2 * vertical + 2 * quarter;
+    float horizontal = hi.x - lo.x - 2 * r;
+    float vertical = hi.y - lo.y - 2 * r;
+    float perimeter = 2 * (horizontal + vertical) + 4 * quarter;
     float distance;
     if (p.x < lo.x + r && p.y < lo.y + r) {
         float angle = atan2(p.y - lo.y - r, p.x - lo.x - r);
         angle = angle < 0 ? angle + 2 * M_PI_F : angle;
-        distance = topHorizontal + bottomHorizontal + 2 * vertical + quarter + (angle - M_PI_F) * r;
+        distance = 2 * (horizontal + vertical) + 3 * quarter + (angle - M_PI_F) * r;
     } else if (p.x > hi.x - r && p.y < lo.y + r) {
         float angle = atan2(p.y - lo.y - r, p.x - hi.x + r);
-        distance = topHorizontal + (angle + M_PI_F * 0.5) * r;
+        distance = horizontal + (angle + M_PI_F * 0.5) * r;
+    } else if (p.x > hi.x - r && p.y > hi.y - r) {
+        float angle = atan2(p.y - hi.y + r, p.x - hi.x + r);
+        distance = horizontal + quarter + vertical + angle * r;
+    } else if (p.x < lo.x + r && p.y > hi.y - r) {
+        float angle = atan2(p.y - hi.y + r, p.x - lo.x - r);
+        distance = 2 * horizontal + 2 * quarter + vertical + (angle - M_PI_F * 0.5) * r;
     } else {
         float4 edgeDistance = abs(float4(p.y - lo.y, p.x - hi.x, p.y - hi.y, p.x - lo.x));
         float nearest = min(min(edgeDistance.x, edgeDistance.y), min(edgeDistance.z, edgeDistance.w));
         if (nearest == edgeDistance.x) {
-            distance = clamp(p.x - lo.x - r, 0.0, topHorizontal);
+            distance = clamp(p.x - lo.x - r, 0.0, horizontal);
         } else if (nearest == edgeDistance.y) {
-            distance = topHorizontal + quarter + clamp(p.y - lo.y - r, 0.0, vertical);
+            distance = horizontal + quarter + clamp(p.y - lo.y - r, 0.0, vertical);
         } else if (nearest == edgeDistance.z) {
-            distance = topHorizontal + quarter + vertical + clamp(hi.x - p.x, 0.0, bottomHorizontal);
+            distance = horizontal + vertical + 2 * quarter + clamp(hi.x - r - p.x, 0.0, horizontal);
         } else {
-            distance = topHorizontal + quarter + vertical + bottomHorizontal + clamp(hi.y - p.y, 0.0, vertical);
+            distance = 2 * horizontal + vertical + 3 * quarter + clamp(hi.y - r - p.y, 0.0, vertical);
         }
     }
     return distance / perimeter;
@@ -90,10 +95,9 @@ fragment float4 auroraFragment(RasterData input [[stage_in]], constant AuroraUni
     float2 lo = float2(u.emphasis.z);
     float2 hi = u.geometry.xy - lo;
     float r = min(u.geometry.z, min(hi.x - lo.x, hi.y - lo.y) * 0.5 - 1);
-    // 下半部使用零圆角距离场，让左下、右下光线在屏幕边缘形成直角。
-    float cornerRadius = p.y < u.geometry.y * 0.5 ? r : 0.0;
-    float2 q = abs(p - u.geometry.xy * 0.5) - ((hi - lo) * 0.5 - cornerRadius);
-    float signedDistance = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - cornerRadius;
+    // 在可用桌面区域内绘制统一的四角圆角距离场。
+    float2 q = abs(p - u.geometry.xy * 0.5) - ((hi - lo) * 0.5 - r);
+    float signedDistance = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
     float d = abs(signedDistance);
     float halfCore = u.geometry.w * 0.5;
     float glow = u.style.x;

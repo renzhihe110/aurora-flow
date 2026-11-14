@@ -17,10 +17,11 @@ public struct AuroraConfig: Equatable, Sendable {
     public var brightness: Double
     public var clockwise: Bool
     public var displayMode: AuroraDisplayMode
-    /// 顶部两个角的圆角半径；底部两个角固定为直角。
+    /// 边框四个角共用的圆角半径，单位为物理像素。
     public var cornerRadius: Double
 
-    public init(borderWidth: Double = 3, glowRadius: Double = 24, animationDuration: Double = 8, breathingDuration: Double = 3, brightness: Double = 0.85, clockwise: Bool = true, displayMode: AuroraDisplayMode = .allScreens, cornerRadius: Double = 32) {
+    /// 默认使用 6 px 核心线和 40 px 光晕，重启后保持加粗效果。
+    public init(borderWidth: Double = 6, glowRadius: Double = 40, animationDuration: Double = 8, breathingDuration: Double = 3, brightness: Double = 0.85, clockwise: Bool = true, displayMode: AuroraDisplayMode = .allScreens, cornerRadius: Double = 32) {
         self.borderWidth = borderWidth
         self.glowRadius = glowRadius
         self.animationDuration = animationDuration
@@ -34,8 +35,8 @@ public struct AuroraConfig: Equatable, Sendable {
     /// 限制无效值，避免调用方传入 NaN、零周期或超大绘制区域。
     func sanitized() -> AuroraConfig {
         var result = self
-        result.borderWidth = finiteClamp(borderWidth, fallback: 3, range: 1...8)
-        result.glowRadius = finiteClamp(glowRadius, fallback: 24, range: 12...60)
+        result.borderWidth = finiteClamp(borderWidth, fallback: 6, range: 1...8)
+        result.glowRadius = finiteClamp(glowRadius, fallback: 40, range: 12...60)
         result.animationDuration = finiteClamp(animationDuration, fallback: 8, range: 2...30)
         result.breathingDuration = finiteClamp(breathingDuration, fallback: 3, range: 0.5...12)
         result.brightness = finiteClamp(brightness, fallback: 0.85, range: 0...1)
