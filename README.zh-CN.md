@@ -8,12 +8,10 @@
 
 ## 下载与要求
 
-已发布的 v1.0.0 下载包保留原来的整屏边框和底部直角；本文所述可用区域边框与加粗默认值属于当前源码变更。
-
 | 文件 | 内容 |
 | --- | --- |
-| `AuroraFlow-1.0.0-macOS-universal.zip` | 独立菜单栏 App，兼容 Apple Silicon 和 Intel |
-| `aurora-desktop-indicator-1.0.0.zip` | 完整 Skill、安装器、控制脚本和内置 App |
+| `AuroraFlow-1.0.1-macOS-universal.zip` | 独立菜单栏 App，兼容 Apple Silicon 和 Intel |
+| `aurora-desktop-indicator-1.0.1.zip` | 完整 Skill、安装器、控制脚本和内置 App |
 | `SHA256SUMS.txt` | 两个 ZIP 的 SHA-256 校验值 |
 
 需要 macOS 13+ 和支持 Metal 的 Mac。Skill 还需要 Python 3.9+ 和支持 hooks 的本地 Codex。光效自身不需要屏幕录制或辅助功能权限；桌面操作工具仍遵循各自的权限要求。

@@ -10,12 +10,10 @@ This repository includes both the **Swift/AppKit/Metal application** and a **Cod
 
 ## Downloads
 
-The v1.0.0 downloads retain the original full-display border with square bottom corners. The usable-area border and larger default glow described here are current source changes.
-
 | Release asset | Contents |
 | --- | --- |
-| `AuroraFlow-1.0.0-macOS-universal.zip` | Standalone menu bar App, Apple Silicon + Intel |
-| `aurora-desktop-indicator-1.0.0.zip` | Complete Codex skill, installer, controller and bundled App |
+| `AuroraFlow-1.0.1-macOS-universal.zip` | Standalone menu bar App, Apple Silicon + Intel |
+| `aurora-desktop-indicator-1.0.1.zip` | Complete Codex skill, installer, controller and bundled App |
 | `SHA256SUMS.txt` | SHA-256 hashes of both ZIP files |
 
 Requirements: macOS 13 or later and a Metal-capable Mac. The skill also requires Python 3.9+ and a local Codex installation with hooks support. The glow itself does not require Accessibility or Screen Recording permission; desktop automation tools retain their own permission requirements.

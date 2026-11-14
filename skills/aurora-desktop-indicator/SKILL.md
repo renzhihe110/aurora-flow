@@ -5,7 +5,7 @@ description: Show a transparent Aurora Flow screen-edge indicator on macOS while
 
 # Aurora Desktop Indicator
 
-Use the bundled `assets/AuroraFlow.app`. It draws a click-through, nonactivating blue/purple screen border with rounded top corners and square bottom corners. Do not open its settings window during automation.
+Use the bundled `assets/AuroraFlow.app`. It draws a click-through, nonactivating blue/purple screen border with four rounded corners around the usable desktop area. Do not open its settings window during automation.
 
 ## Lifecycle
 
