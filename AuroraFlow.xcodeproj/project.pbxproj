@@ -1,0 +1,359 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01580D48BD6272CC3AB9B870 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0040727585BCDB2CA168D038 /* AppDelegate.swift */; };
+		06017CE04CCC18A2721721C3 /* AuroraBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF451B014171B23A33F223E7 /* AuroraBorder.swift */; };
+		2457FF387A0C72FBC257CE0C /* AuroraConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8889B536E35E44B37AA095 /* AuroraConfig.swift */; };
+		9652D38E78EFEF14F2BB476D /* AuroraShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = CA0E0F9BD886B1F4FD0907C4 /* AuroraShaders.metal */; };
+		BA3E21097167BD613CB1870E /* AuroraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD16D3064B00F0FE98E8B404 /* AuroraOverlay.swift */; };
+		BDC82ADD7F61DD57141ACE0D /* AuroraRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE21505FD5F3AD1206F3FFD /* AuroraRenderer.swift */; };
+		DA6BFA45475669199D952A86 /* AuroraTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F17C126E94A80C42F6B1CA /* AuroraTimeline.swift */; };
+		DBF076FDDABD04E4585EE7F6 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B34F586EBEFF5B3032C1187 /* AppMain.swift */; };
+		FDBE4690548359E666A2DA12 /* MenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB8A8E6535362E95A140DDE /* MenuContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0040727585BCDB2CA168D038 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		261149100488645614F58AB2 /* AuroraFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuroraFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FE21505FD5F3AD1206F3FFD /* AuroraRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraRenderer.swift; sourceTree = "<group>"; };
+		6B8889B536E35E44B37AA095 /* AuroraConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraConfig.swift; sourceTree = "<group>"; };
+		7B34F586EBEFF5B3032C1187 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
+		AFB8A8E6535362E95A140DDE /* MenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContentView.swift; sourceTree = "<group>"; };
+		CA0E0F9BD886B1F4FD0907C4 /* AuroraShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AuroraShaders.metal; sourceTree = "<group>"; };
+		CD16D3064B00F0FE98E8B404 /* AuroraOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraOverlay.swift; sourceTree = "<group>"; };
+		E2F17C126E94A80C42F6B1CA /* AuroraTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraTimeline.swift; sourceTree = "<group>"; };
+		FF451B014171B23A33F223E7 /* AuroraBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraBorder.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		3B5343BF0F44CC7FA56339B7 /* AuroraFlow */ = {
+			isa = PBXGroup;
+			children = (
+				B36592FDDFEC54F5401C2909 /* App */,
+				F712006A6F8ADCCD690CAF9F /* Core */,
+				AB50660F99B0CBD27B6031DD /* Overlay */,
+				6ED6340945AFB6FD1D512750 /* Rendering */,
+			);
+			path = AuroraFlow;
+			sourceTree = "<group>";
+		};
+		6AAFCD6E7641165E5FE351D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				261149100488645614F58AB2 /* AuroraFlow.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6ED6340945AFB6FD1D512750 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				5FE21505FD5F3AD1206F3FFD /* AuroraRenderer.swift */,
+				CA0E0F9BD886B1F4FD0907C4 /* AuroraShaders.metal */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		7133CCE76AB95C9AADF378E4 = {
+			isa = PBXGroup;
+			children = (
+				3B5343BF0F44CC7FA56339B7 /* AuroraFlow */,
+				6AAFCD6E7641165E5FE351D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AB50660F99B0CBD27B6031DD /* Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				CD16D3064B00F0FE98E8B404 /* AuroraOverlay.swift */,
+			);
+			path = Overlay;
+			sourceTree = "<group>";
+		};
+		B36592FDDFEC54F5401C2909 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0040727585BCDB2CA168D038 /* AppDelegate.swift */,
+				7B34F586EBEFF5B3032C1187 /* AppMain.swift */,
+				AFB8A8E6535362E95A140DDE /* MenuContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F712006A6F8ADCCD690CAF9F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				FF451B014171B23A33F223E7 /* AuroraBorder.swift */,
+				6B8889B536E35E44B37AA095 /* AuroraConfig.swift */,
+				E2F17C126E94A80C42F6B1CA /* AuroraTimeline.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ACDD68BF13AE0EE0CD6B0748 /* AuroraFlow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A2C4A6337F14DCB5EEA672C /* Build configuration list for PBXNativeTarget "AuroraFlow" */;
+			buildPhases = (
+				1D2BBC13E76C907E2A29821F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AuroraFlow;
+			packageProductDependencies = (
+			);
+			productName = AuroraFlow;
+			productReference = 261149100488645614F58AB2 /* AuroraFlow.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A45AEF9A7F448606BD9A573 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					ACDD68BF13AE0EE0CD6B0748 = {
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = CE034AACE3ED677AAC07945C /* Build configuration list for PBXProject "AuroraFlow" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7133CCE76AB95C9AADF378E4;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6AAFCD6E7641165E5FE351D0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ACDD68BF13AE0EE0CD6B0748 /* AuroraFlow */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D2BBC13E76C907E2A29821F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01580D48BD6272CC3AB9B870 /* AppDelegate.swift in Sources */,
+				DBF076FDDABD04E4585EE7F6 /* AppMain.swift in Sources */,
+				06017CE04CCC18A2721721C3 /* AuroraBorder.swift in Sources */,
+				2457FF387A0C72FBC257CE0C /* AuroraConfig.swift in Sources */,
+				BA3E21097167BD613CB1870E /* AuroraOverlay.swift in Sources */,
+				BDC82ADD7F61DD57141ACE0D /* AuroraRenderer.swift in Sources */,
+				9652D38E78EFEF14F2BB476D /* AuroraShaders.metal in Sources */,
+				DA6BFA45475669199D952A86 /* AuroraTimeline.swift in Sources */,
+				FDBE4690548359E666A2DA12 /* MenuContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		15D35E5E36DAB3EB08F2FF09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = targeted;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1F7E79406F6156129DA78816 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AuroraFlow/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.auroraflow.demo;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9D0E07684C6EE99C821B1145 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AuroraFlow/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.auroraflow.demo;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B12DBB4B40F5BDAEB44C407C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = targeted;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A2C4A6337F14DCB5EEA672C /* Build configuration list for PBXNativeTarget "AuroraFlow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D0E07684C6EE99C821B1145 /* Debug */,
+				1F7E79406F6156129DA78816 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CE034AACE3ED677AAC07945C /* Build configuration list for PBXProject "AuroraFlow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15D35E5E36DAB3EB08F2FF09 /* Debug */,
+				B12DBB4B40F5BDAEB44C407C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A45AEF9A7F448606BD9A573 /* Project object */;
+}

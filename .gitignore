@@ -1,0 +1,12 @@
+# 本地构建、运行状态和规划文件不进入公开仓库。
+.DS_Store
+build/
+DerivedData/
+dist/
+*.app/
+*.dSYM/
+*.xcuserstate
+xcuserdata/
+.planning-with-files/
+__pycache__/
+*.pyc

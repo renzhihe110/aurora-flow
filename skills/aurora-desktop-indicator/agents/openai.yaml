@@ -1,0 +1,6 @@
+interface:
+  display_name: "Aurora Desktop Indicator"
+  short_description: "Show a screen-edge glow during desktop automation, then exit"
+  default_prompt: "Use $aurora-desktop-indicator to show the screen border while operating desktop tools and release it when finished."
+policy:
+  allow_implicit_invocation: true
