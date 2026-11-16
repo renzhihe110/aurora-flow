@@ -2,14 +2,14 @@ import AppKit
 import CoreGraphics
 
 /// 使用显示器 UUID 标识单屏目标，断开后保留选择，重连时自动恢复。
-public enum AuroraDisplayMode: Equatable, Sendable {
+public enum AuroraDisplayMode: Codable, Equatable, Sendable {
     case allScreens
     case primaryScreen
     case screen(String)
 }
 
 /// 光线尺寸使用物理像素，窗口尺寸始终由 AppKit 以 point 管理。
-public struct AuroraConfig: Equatable, Sendable {
+public struct AuroraConfig: Codable, Equatable, Sendable {
     public var borderWidth: Double
     public var glowRadius: Double
     public var animationDuration: Double
@@ -20,8 +20,8 @@ public struct AuroraConfig: Equatable, Sendable {
     /// 边框四个角共用的圆角半径，单位为物理像素。
     public var cornerRadius: Double
 
-    /// 默认使用 6 px 核心线和 40 px 光晕，重启后保持加粗效果。
-    public init(borderWidth: Double = 6, glowRadius: Double = 40, animationDuration: Double = 8, breathingDuration: Double = 3, brightness: Double = 0.85, clockwise: Bool = true, displayMode: AuroraDisplayMode = .allScreens, cornerRadius: Double = 32) {
+    /// 默认使用 6 px 核心线、40 px 光晕和较小的窗口式圆角。
+    public init(borderWidth: Double = 6, glowRadius: Double = 40, animationDuration: Double = 8, breathingDuration: Double = 3, brightness: Double = 0.85, clockwise: Bool = true, displayMode: AuroraDisplayMode = .allScreens, cornerRadius: Double = 16) {
         self.borderWidth = borderWidth
         self.glowRadius = glowRadius
         self.animationDuration = animationDuration
@@ -40,7 +40,7 @@ public struct AuroraConfig: Equatable, Sendable {
         result.animationDuration = finiteClamp(animationDuration, fallback: 8, range: 2...30)
         result.breathingDuration = finiteClamp(breathingDuration, fallback: 3, range: 0.5...12)
         result.brightness = finiteClamp(brightness, fallback: 0.85, range: 0...1)
-        result.cornerRadius = finiteClamp(cornerRadius, fallback: 32, range: 4...100)
+        result.cornerRadius = finiteClamp(cornerRadius, fallback: 16, range: 4...100)
         return result
     }
 

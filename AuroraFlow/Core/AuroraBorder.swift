@@ -43,7 +43,7 @@ public enum AuroraBorder {
 @MainActor
 final class AuroraController: ObservableObject {
     static let shared = AuroraController()
-    @Published private(set) var config = AuroraConfig()
+    @Published private(set) var config: AuroraConfig
     @Published private(set) var state: AuroraState = .idle
     @Published private(set) var displays: [AuroraDisplay] = []
     @Published private(set) var lastError: String?
@@ -58,6 +58,10 @@ final class AuroraController: ObservableObject {
     private var sessionInactive = false
 
     private init() {
+        // 从本机设置恢复上次的参数，并在动画启动前同步时间轴。
+        let savedConfig = UserDefaults.standard.data(forKey: "AuroraFlow.config").flatMap { try? JSONDecoder().decode(AuroraConfig.self, from: $0) }
+        config = (savedConfig ?? AuroraConfig()).sanitized()
+        timeline.update(config: config)
         refreshDisplays()
         // 通知仅在拓扑、Space 或系统电源状态改变时触发，Idle 没有轮询。
         observe(NSApplication.didChangeScreenParametersNotification, center: .default) { [weak self] in
@@ -92,6 +96,10 @@ final class AuroraController: ObservableObject {
         let sanitized = config.sanitized()
         timeline.update(config: sanitized)
         self.config = sanitized
+        // 参数更新时立即保存，确保退出或被 Hook 结束后仍可恢复。
+        if let data = try? JSONEncoder().encode(sanitized) {
+            UserDefaults.standard.set(data, forKey: "AuroraFlow.config")
+        }
         reconcileOverlays()
     }
 

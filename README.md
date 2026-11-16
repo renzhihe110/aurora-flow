@@ -4,7 +4,7 @@ A native macOS screen-edge glow for desktop automation and background tasks.
 
 [中文说明](README.zh-CN.md) · [Download](https://github.com/renzhihe110/aurora-flow/releases/latest) · [MIT License](LICENSE)
 
-Aurora Flow draws a calm cyan, blue and purple border around the usable desktop area, excluding the current menu bar and Dock. The center stays transparent, mouse input passes through, and task updates leave the current application focused. All four corners are rounded. The default core width is 6 physical pixels and the glow radius is 40 physical pixels.
+Aurora Flow draws a calm cyan, blue and purple border around the usable desktop area, excluding the current menu bar and Dock. The center stays transparent, mouse input passes through, and task updates leave the current application focused. All four corners are rounded. Defaults are a 6-pixel core width, 40-pixel glow radius and 16-pixel corner radius, all measured in physical pixels.
 
 This repository includes both the **Swift/AppKit/Metal application** and a **Codex skill with lifecycle hooks** for `computer-use`, `cua_repl`, `agent-desktop` and `mac-input`.
 
@@ -12,8 +12,8 @@ This repository includes both the **Swift/AppKit/Metal application** and a **Cod
 
 | Release asset | Contents |
 | --- | --- |
-| `AuroraFlow-1.0.1-macOS-universal.zip` | Standalone menu bar App, Apple Silicon + Intel |
-| `aurora-desktop-indicator-1.0.1.zip` | Complete Codex skill, installer, controller and bundled App |
+| `AuroraFlow-1.0.2-macOS-universal.zip` | Standalone menu bar App, Apple Silicon + Intel |
+| `aurora-desktop-indicator-1.0.2.zip` | Complete Codex skill, installer, controller and bundled App |
 | `SHA256SUMS.txt` | SHA-256 hashes of both ZIP files |
 
 Requirements: macOS 13 or later and a Metal-capable Mac. The skill also requires Python 3.9+ and a local Codex installation with hooks support. The glow itself does not require Accessibility or Screen Recording permission; desktop automation tools retain their own permission requirements.
@@ -25,6 +25,8 @@ Prebuilt Apps are ad-hoc signed and **not notarized with Developer ID**. macOS m
 Download and extract the App ZIP, move `AuroraFlow.app` to your preferred location, and open it. Click its menu bar sparkle to access Start, Success, Error, Stop and Cancel, plus live brightness, line width, speed, direction and display controls. Quit exits the App completely.
 
 The App starts idle. Only opening the settings window intentionally gives that window keyboard focus; showing the border does not.
+
+Settings are saved when changed and restored on the next launch, including launches through the skill and hooks. Brightness, line width, animation periods, direction, display selection, glow radius and corner radius use local macOS preferences (`com.auroraflow.demo`, key `AuroraFlow.config`). A saved corner radius takes precedence over the new default.
 
 ## Install the Codex skill
 

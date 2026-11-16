@@ -1,5 +1,11 @@
 # Validation and manual acceptance
 
+## v1.0.2
+
+Both arm64 and x86_64 Swift Release architectures were rebuilt for settings persistence and the 16-physical-pixel default corner radius. The unchanged, previously verified Metal library was reused. Only Apple Silicon was run. The real App saved a temporary configuration, exited, restarted, and retained brightness, width, period, direction and display selection when another setting was updated. Original preferences were restored afterward. Separate CUA interaction changed controls in the settings panel; after restart the saved values were present, but the tool could not reopen the settings panel for a second visual reading. The smaller corners were visually approved while real overlays ran on two displays.
+
+## Earlier releases
+
 The initial implementation was built and exercised on macOS 26.6 with Apple Silicon, a 3024×1964 Retina display and Xcode 27.2. Both arm64 and x86_64 Release architectures compiled; only Apple Silicon was run. The v1.0.0 release binary has rounded top corners and square bottom corners.
 
 Observed behavior includes real screen overlays, click-through button interaction, keyboard input in an independent window, a standard full-screen Space, menu controls, configuration updates, repeated starts/stops and interrupting a terminal animation with a new task. Prior checks also exercised session sharing and real Codex hooks for mac-input, CUA completion cleanup and agent-desktop commands.

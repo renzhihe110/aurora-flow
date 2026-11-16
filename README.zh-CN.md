@@ -4,14 +4,14 @@
 
 [English](README.md) · [下载发布包](https://github.com/renzhihe110/aurora-flow/releases/latest) · [MIT 许可证](LICENSE)
 
-光效沿系统可用桌面区域四边流动，避开当前菜单栏和 Dock，中心透明、鼠标穿透、不抢占当前应用焦点。四个角均为圆角，默认核心线宽 6 物理像素、光晕半径 40 物理像素。仓库同时包含 **Swift/AppKit/Metal App** 和支持 `computer-use`、`cua_repl`、`agent-desktop`、`mac-input` 的 **Codex Skill**。
+光效沿系统可用桌面区域四边流动，避开当前菜单栏和 Dock，中心透明、鼠标穿透、不抢占当前应用焦点。四个角均为圆角，默认核心线宽 6 物理像素、光晕半径 40 物理像素、圆角半径 16 物理像素。仓库同时包含 **Swift/AppKit/Metal App** 和支持 `computer-use`、`cua_repl`、`agent-desktop`、`mac-input` 的 **Codex Skill**。
 
 ## 下载与要求
 
 | 文件 | 内容 |
 | --- | --- |
-| `AuroraFlow-1.0.1-macOS-universal.zip` | 独立菜单栏 App，兼容 Apple Silicon 和 Intel |
-| `aurora-desktop-indicator-1.0.1.zip` | 完整 Skill、安装器、控制脚本和内置 App |
+| `AuroraFlow-1.0.2-macOS-universal.zip` | 独立菜单栏 App，兼容 Apple Silicon 和 Intel |
+| `aurora-desktop-indicator-1.0.2.zip` | 完整 Skill、安装器、控制脚本和内置 App |
 | `SHA256SUMS.txt` | 两个 ZIP 的 SHA-256 校验值 |
 
 需要 macOS 13+ 和支持 Metal 的 Mac。Skill 还需要 Python 3.9+ 和支持 hooks 的本地 Codex。光效自身不需要屏幕录制或辅助功能权限；桌面操作工具仍遵循各自的权限要求。
@@ -23,6 +23,8 @@
 从 [Releases](https://github.com/renzhihe110/aurora-flow/releases/latest) 下载 App ZIP，解压后将 `AuroraFlow.app` 移动到喜欢的位置并打开。点击菜单栏闪光图标，使用 Start、Success、Error、Stop、Cancel，或调整亮度、粗细、周期、方向和显示器。Quit 完全退出程序。
 
 启动时为 Idle。只有主动打开设置窗口时，该窗口才接收键盘输入；任务状态变化不会激活 App。
+
+参数修改时会自动保存，下次启动时恢复，Skill 和 Hook 启动 App 时同样生效。亮度、线宽、动画周期、方向、显示器选择、光晕半径和圆角半径保存在本机 macOS 偏好设置中（域 `com.auroraflow.demo`，键 `AuroraFlow.config`）。已保存的圆角参数优先于新版默认值。
 
 ## 安装 Codex Skill
 
